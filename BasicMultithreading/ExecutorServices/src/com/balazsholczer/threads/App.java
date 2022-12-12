@@ -2,6 +2,7 @@ package com.balazsholczer.threads;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 	/**
 	 * 
@@ -43,7 +44,7 @@ class Worker implements Runnable{
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		ExecutorService executorService = Executors.newFixedThreadPool(5);
 		
@@ -51,5 +52,11 @@ public class App {
 			executorService.execute(new Worker());
 		}
 		
+		executorService.shutdown();
+		
+		if (!executorService.awaitTermination(5000, TimeUnit.NANOSECONDS)) {
+			executorService.shutdownNow();
+		}
+	
 	}
 }
