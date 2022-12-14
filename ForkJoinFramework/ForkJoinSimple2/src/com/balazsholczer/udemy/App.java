@@ -7,7 +7,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
-		SimpleRecursiveAction simpleRecursiveAction = new SimpleRecursiveAction(20);
+		SimpleRecursiveAction simpleRecursiveAction = new SimpleRecursiveAction(400);
 		System.out.println( forkJoinPool.invoke(simpleRecursiveAction) );
 		
 		

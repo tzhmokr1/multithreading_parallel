@@ -15,15 +15,15 @@ public class Book {
 	}
 
 	public void read(Student student) throws InterruptedException {
-		lock.tryLock(10, TimeUnit.MINUTES);
-		System.out.println(student + " starts reading " + this);
-		Thread.sleep(2000);
-		lock.unlock();
-		System.out.println(student + " has finished reading " + this);
+		if(lock.tryLock(10, TimeUnit.SECONDS)) {
+			System.out.println(student + " starts reading " + this);
+			Thread.sleep(2000); // read book
+			lock.unlock();
+			System.out.println(student + " has finished reading " + this);
+		}
 	}
 
 	public String toString() {
 		return "Book" + id;
 	}
-
 }

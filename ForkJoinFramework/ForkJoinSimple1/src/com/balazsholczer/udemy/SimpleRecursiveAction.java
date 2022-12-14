@@ -20,8 +20,12 @@ public class SimpleRecursiveAction extends RecursiveAction {
 			SimpleRecursiveAction simpleRecursiveAction1 = new SimpleRecursiveAction(simulatedWork/2);
 			SimpleRecursiveAction simpleRecursiveAction2 = new SimpleRecursiveAction(simulatedWork/2);
 			
-			simpleRecursiveAction1.fork();
-			simpleRecursiveAction2.fork();
+			// simpleRecursiveAction1.fork();	// insert into ForkJoinPool
+			// simpleRecursiveAction2.fork();	// insert into ForkJoinPool
+			// simpleRecursiveAction1.join();	// wait
+			// simpleRecursiveAction2.join();	// wait
+			
+			invokeAll(simpleRecursiveAction1, simpleRecursiveAction2); // same as .fork() and .join()
 			
 		} else {
 			System.out.println("No need for parallel execution, sequential is OK for this task..." + simulatedWork);

@@ -9,11 +9,12 @@ public class App {
 		
 		ExecutorService executorService = null;
 		Philosopher[] philosophers = null;
+		ChopStick[] chopSticks = null;
 		
 		try{
 			
 			philosophers = new Philosopher[Constants.NUMBER_OF_PHILOSOPHERS];
-			ChopStick[] chopSticks = new ChopStick[Constants.NUMBER_OF_PHILOSOPHERS];
+			chopSticks = new ChopStick[Constants.NUMBER_OF_PHILOSOPHERS];
 			
 			for(int i=0;i<Constants.NUMBER_OF_CHOPSTICKS;i++){
 				chopSticks[i] = new ChopStick(i);
