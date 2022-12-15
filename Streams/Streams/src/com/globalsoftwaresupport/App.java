@@ -21,16 +21,31 @@ public class App {
 		books.add(new Book("Death of Virgil", "Hermann Broch", 590, Type.NOVEL));
 		books.add(new Book("The Stranger", "Albert Camus", 560, Type.NOVEL));
 
+		
+		
 		// grouping by type
-		Map<Type, List<Book>> booksByType = books.stream().collect(Collectors.
-				groupingBy(Book::getType));
+		Map<Type, List<Book>> booksByType = books.stream()
+													.collect(Collectors.groupingBy(Book::getType));
+
+		booksByType.entrySet().stream().forEach(System.out::println);
+		
+		
+		
 		
 		// finding 2 longest books (with more than 500 pages) (number of pages)
-		List<String> longestBooks = books.stream().filter(p -> p.getPages() > 500)
-				.map(Book::getTitle).limit(2).collect(Collectors.toList());
+		List<String> longestBooks = books.stream()
+											.filter(p -> p.getPages() > 500)
+											//.sorted(Comparator.comparing(Book::getAuthor))
+											.map(Book::getTitle)
+											.limit(2)
+											.collect(Collectors.toList());
 		
-		// booksByType.entrySet().stream().forEach(System.out::println);
 		longestBooks.stream().forEach(System.out::println);
+		
+		
+		// select all the book where the title is made up of exactly 2 words.
+		books.stream().filter(b -> b.getTitle().split(" ").length == 2)
+						.collect(Collectors.toList())
+						.forEach(System.out::println);
 	}
-
 }
