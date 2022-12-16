@@ -1,5 +1,8 @@
 package com.globalsoftwaresupport;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -10,7 +13,7 @@ import java.util.stream.Stream;
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		
 		List<Book> books = new ArrayList<>();
 		books.add(new Book("Being and Time", "Heidegger", 560, Type.PHILOSOPHY));
@@ -24,10 +27,10 @@ public class App {
 		
 		
 		// grouping by type
-		Map<Type, List<Book>> booksByType = books.stream()
+		Map<Type, List<Book>> booksByTypeMap = books.stream()
 													.collect(Collectors.groupingBy(Book::getType));
 
-		booksByType.entrySet().stream().forEach(System.out::println);
+		booksByTypeMap.entrySet().stream().forEach(System.out::println);
 		
 		
 		
@@ -47,5 +50,12 @@ public class App {
 		books.stream().filter(b -> b.getTitle().split(" ").length == 2)
 						.collect(Collectors.toList())
 						.forEach(System.out::println);
+	
+		
+		// process files with streams
+		String path = "/multithreading_parallel/Streams/Streams/src/com/globalsoftwaresupport/names";
+		Stream<String> nameStream = Files.lines(Paths.get(path));
+		List<String> list = nameStream.collect(Collectors.toList());
+		list.forEach(System.out::println);
 	}
 }

@@ -24,7 +24,11 @@ public class App2 {
 
 		// external iteration (collections)
 		List<String> titles = new ArrayList<>();
+		for (Book book :books) {
+			titles.add(book.getTitle());
+		}
 		
+		// Associate Iterator with a collection
 		Iterator<Book> iterator = books.iterator();
 		
 		// inherently sequential
@@ -34,7 +38,8 @@ public class App2 {
 			titles.add(iterator.next().getTitle());
 		}
 		
-		// stream API - internal iteration
+		// Stream API:
+		// internal iteration
 		// parallel quite easily
 		List<String> titles2 = books.stream().map(Book::getTitle).collect(Collectors.toList());
 		
