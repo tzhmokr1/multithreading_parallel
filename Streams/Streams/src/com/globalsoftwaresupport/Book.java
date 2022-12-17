@@ -6,7 +6,7 @@ public class Book {
 	private String title;
 	private int pages;
 	private Type type;
-	
+
 	public Book(String title, String author, int pages, Type type) {
 		this.author = author;
 		this.title = title;

@@ -19,7 +19,7 @@ public class ParallelWorker extends Thread {
 
 	@Override
 	public void run() {
-		
+
 		partialSum = 0;
 
 		for (int i = low; i < high; i++) {

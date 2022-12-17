@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class SequentialMergesort {
 
 	private int[] nums;
-	
+
 	public SequentialMergesort(int[] nums) {
 		this.nums = nums;
 	}
-	
-public void mergeSort(int[] nums) {
-		
+
+	public void mergeSort(int[] nums) {
+
 		if (nums.length <= 1)
 			return;
 
@@ -27,11 +27,11 @@ public void mergeSort(int[] nums) {
 	}
 
 	private void merge(int[] leftSubarray, int[] rightSubarray, int[] originalArray) {
-		
+
 		int i = 0;
 		int j = 0;
 		int k = 0;
-		
+
 		while (i < leftSubarray.length && j < rightSubarray.length) {
 			if (leftSubarray[i] < rightSubarray[j])
 				originalArray[k++] = leftSubarray[i++];

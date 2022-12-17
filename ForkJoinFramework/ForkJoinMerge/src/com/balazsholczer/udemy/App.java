@@ -13,14 +13,13 @@ public class App {
 		long start = System.currentTimeMillis();
 		mergesort.mergeSort(nums);
 		System.out.println("Time taken with sequential sort: " + (System.currentTimeMillis() - start) + "ms");
-		
+
 		MergeSortTask rootTask = new MergeSortTask(nums);
 		ForkJoinPool pool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
 		start = System.currentTimeMillis();
 		pool.invoke(rootTask);
 		System.out.println("Time taken with parallel sort: " + (System.currentTimeMillis() - start) + "ms");
-		
-		
+
 	}
 
 	private static int[] initializeNums() {

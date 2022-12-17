@@ -5,9 +5,8 @@ import java.util.Random;
 
 public class ParallelMergeSort {
 
-
 	public void parallelMergeSort(int[] numbers, int numOfThreads) {
-		
+
 		if (numOfThreads <= 1) {
 			mergeSort(numbers);
 			return;
@@ -35,7 +34,7 @@ public class ParallelMergeSort {
 	}
 
 	private Thread mergeSortThread(int[] numbers, int numOfThreads) {
-		
+
 		return new Thread() {
 			@Override
 			public void run() {
@@ -50,7 +49,7 @@ public class ParallelMergeSort {
 	 * @param a
 	 */
 	public void mergeSort(int[] a) {
-		
+
 		if (a.length <= 1)
 			return;
 
@@ -67,11 +66,11 @@ public class ParallelMergeSort {
 
 	// Logic to merge two sorted arrays
 	private void merge(int[] leftSubarray, int[] rightSubarray, int[] originalArray) {
-		
+
 		int i = 0;
 		int j = 0;
 		int k = 0;
-		
+
 		while (i < leftSubarray.length && j < rightSubarray.length) {
 			if (leftSubarray[i] < rightSubarray[j])
 				originalArray[k++] = leftSubarray[i++];
@@ -85,5 +84,4 @@ public class ParallelMergeSort {
 		while (j < rightSubarray.length)
 			originalArray[k++] = rightSubarray[j++];
 	}
-
 }

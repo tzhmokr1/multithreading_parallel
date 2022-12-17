@@ -4,16 +4,15 @@ public class ParallelSum {
 
 	private ParallelWorker[] sums;
 	private int numOfThreads;
-	
+
 	public ParallelSum(int numOfThreads) {
 		this.sums = new ParallelWorker[numOfThreads];
 		this.numOfThreads = numOfThreads;
 	}
-	
-	public int parallelSum(int[] nums) {
-		
-		int size = (int) Math.ceil(nums.length * 1.0 / numOfThreads);
 
+	public int parallelSum(int[] nums) {
+
+		int size = (int) Math.ceil(nums.length * 1.0 / numOfThreads);
 
 		for (int i = 0; i < numOfThreads; i++) {
 			sums[i] = new ParallelWorker(nums, i * size, (i + 1) * size);
@@ -36,5 +35,4 @@ public class ParallelSum {
 
 		return total;
 	}
-
 }

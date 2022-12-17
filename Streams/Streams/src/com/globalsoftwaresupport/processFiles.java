@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class processFiles {
 
 	public static void main(String[] args) throws IOException {
-		
+
 		// process files with streams
 		String path = "/multithreading_parallel/Streams/Streams/src/com/globalsoftwaresupport/names";
 		Stream<String> nameStream = Files.lines(Paths.get(path));

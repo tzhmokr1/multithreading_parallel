@@ -22,7 +22,7 @@ public class MergeSort {
 		int middleIndex = (low + high) / 2;
 
 		Thread leftSorter = mergeSortThread(low, middleIndex, numOfThreads);
-		Thread rightSorter = mergeSortThread(middleIndex+1, high, numOfThreads);
+		Thread rightSorter = mergeSortThread(middleIndex + 1, high, numOfThreads);
 
 		leftSorter.start();
 		rightSorter.start();

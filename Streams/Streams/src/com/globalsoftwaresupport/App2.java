@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class App2 {
 
 	public static void main(String[] args) {
-		
+
 		List<Book> books = new ArrayList<>();
 		books.add(new Book("Being and Time", "Heidegger", 560, Type.PHILOSOPHY));
 		books.add(new Book("The Trial", "Franz Kafka", 240, Type.NOVEL));
@@ -24,27 +24,24 @@ public class App2 {
 
 		// external iteration (collections)
 		List<String> titles = new ArrayList<>();
-		for (Book book :books) {
+		for (Book book : books) {
 			titles.add(book.getTitle());
 		}
-		
+
 		// Associate Iterator with a collection
 		Iterator<Book> iterator = books.iterator();
-		
+
 		// inherently sequential
 		// [item1, item2, item3, item4]
 		// no parallelization
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			titles.add(iterator.next().getTitle());
 		}
-		
+
 		// Stream API:
 		// internal iteration
 		// parallel quite easily
 		List<String> titles2 = books.stream().map(Book::getTitle).collect(Collectors.toList());
-		
 		titles2.forEach(e -> System.out.println(e));
-		
 	}
-
 }

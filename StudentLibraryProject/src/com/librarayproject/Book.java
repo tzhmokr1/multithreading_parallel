@@ -15,7 +15,7 @@ public class Book {
 	}
 
 	public void read(Student student) throws InterruptedException {
-		if(lock.tryLock(10, TimeUnit.SECONDS)) {
+		if (lock.tryLock(10, TimeUnit.SECONDS)) {
 			System.out.println(student + " starts reading " + this);
 			Thread.sleep(2000); // read book
 			lock.unlock();

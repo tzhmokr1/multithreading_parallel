@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class App3 {
 
 	public static void main(String[] args) {
-		
+
 		List<Book> books = new ArrayList<>();
 		books.add(new Book("Being and Time", "Heidegger", 560, Type.PHILOSOPHY));
 		books.add(new Book("The Trial", "Franz Kafka", 240, Type.NOVEL));
@@ -23,24 +23,21 @@ public class App3 {
 
 		// finding 2 longest books (with more than 500 pages)
 		// short-circuiting and loop fusion
-		// filter() and map() are different operations, they 
+		// filter() and map() are different operations, they
 		// are merged into the same pass (loop fusion)
-		// short-circuiting: some operations don’t need to process the whole 
+		// short-circuiting: some operations don’t need to process the whole
 		// stream to produce a result
 		// here we are looking for just 2 items - so the algorithm
 		// terminates after finding 2 items !!!
-		List<String> longestBooks = books.stream()
-				.filter(p -> {
-					System.out.println("Filtering " + p.getTitle());
-					return p.getPages() > 500;
-				})
-				.map(b -> {
-					System.out.println("Mapping " + b.getTitle());
-					return b.getTitle();
-				})
-				.limit(2)
-				.collect(Collectors.toList());
-		
+		List<String> longestBooks = books.stream().filter(p -> {
+			System.out.println("Filtering " + p.getTitle());
+			return p.getPages() > 500;
+		}).map(b -> {
+			System.out.println("Mapping " + b.getTitle());
+			return b.getTitle();
+		}).limit(2)
+		  .collect(Collectors.toList());
+
 		// longestBooks.stream().forEach(System.out::println);
 	}
 
